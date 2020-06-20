@@ -1,0 +1,12 @@
+<span>News</span>
+<div class="newsSection">
+    <span class="topRightBtn WideLabel" (click)="changeWideHideSection()">{{this.labelWideHideSection}}</span>
+    <div [class]="classSection">
+        <div *ngFor="let new of news" class="new">
+            <img [src]="new.image">
+            <div class="headline">{{new.headline}}</div>
+            <div class="summary">{{new.summary}}</div>
+            <a class="source" href="{{new.source}}" target="_blank">{{new.source}}</a>
+        </div>
+    </div>
+</div>

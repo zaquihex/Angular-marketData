@@ -1,0 +1,14 @@
+<div style="margin: 10px; margin-left: 5%; margin-right: 5%">
+    <h1>Market data - <small>{{this.companySelected}}</small></h1>
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: #fff" > Loading... </p></ngx-spinner>
+<div class="form-group">
+        <select #select class="form-control" [value]="this.companySelected" [(ngModel)]="this.companySelected" (change)="changeCompany(select.value)" style="width: '350px'; cursor: none; border: none">
+            <option *ngFor="let company of this.listCompanies" [value]="company.symbol" [selected]="this.companySelected === company.symbol">{{company.name}}</option>
+        </select>
+    </div>
+  <div class="notFound" *ngIf="this.companyRecommendations.lineX.length === 0">
+    Data not found to print the graphic
+  </div>
+    <app-graphic-line *ngIf="this.companyRecommendations.lineX.length > 0" [fullData]="companyRecommendations" class="graphicCompanyMarket"></app-graphic-line>
+    <app-news-list [news]="companyNews"></app-news-list>
+</div>
