@@ -10,6 +10,35 @@ div.notFound {
   animation-duration: 3s;
 }
 
+.segmentedButtons {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  button {
+    max-width: 300px;
+    flex: 1;
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  .activeSegmentedOption {
+    background: rgba(152, 152, 152, 0.76);
+  }
+
+  .firstOption {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: none;
+  }
+
+  .lastOption {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
+
 @keyframes notfoundanimation {
   from {
     color: grey;
