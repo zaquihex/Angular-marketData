@@ -17,7 +17,13 @@
     <button id="companyRecommendations" class="firstOption activeSegmentedOption" (click)="changeGraphic('companyRecommendations')">Recommendations</button>
     <button id="companyStock" class="lastOption" (click)="changeGraphic('companyStock')">Stock</button>
   </div>
-  <app-graphic-line *ngIf="this.companyRecommendations.lineX.length > 0" [fullData]="graphicSelected"
-    class="graphicCompanyMarket"></app-graphic-line>
+  <app-graphic-line
+          *ngIf="this.companyRecommendations.lineX.length > 0"
+          [fullData]="graphicSelected"
+          (somethingChange)="consoleScreen($event)"
+          class="graphicCompanyMarket"
+  ></app-graphic-line
+
+  >
   <app-news-list [news]="companyNews"></app-news-list>
 </div>

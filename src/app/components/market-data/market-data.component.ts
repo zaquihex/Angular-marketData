@@ -35,6 +35,11 @@ export class MarketDataComponent {
   }
 
   constructor(private finnhub: FinnhubService, private spinner: NgxSpinnerService, private marketStack: MarketstackService) {
+
+    marketStack.setJulioPropValue.subscribe((data) => {
+      debugger;
+    });
+
     /** spinner starts on init */
     this.spinner.show();
 
@@ -100,7 +105,7 @@ export class MarketDataComponent {
 
 
   graphicSelected = this.companyRecommendations;
-  
+
   public changeCompany(value: string) {
     this.companySelected = value;
     this.getInfoCompany();
@@ -149,7 +154,11 @@ export class MarketDataComponent {
       case '12': return `December (${year})`;
     }
   }
-  
+
+  consoleScreen(info) {
+    console.log(info);
+  }
+
   changeGraphic(graphicSelected: string) {
     this.graphicSelected = this[graphicSelected];
     const buttonRecommId: any = document.getElementById('companyRecommendations');

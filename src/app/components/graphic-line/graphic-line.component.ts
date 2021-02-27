@@ -1,6 +1,12 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, EventEmitter, Output } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label, Color, BaseChartDirective } from 'ng2-charts';
+import {MarketstackService} from '../../services/marketstack.service';
+
+interface response {
+  nombre: string;
+  edad: number;
+}
 
 @Component({
   selector: 'app-graphic-line',
@@ -10,6 +16,17 @@ import { Label, Color, BaseChartDirective } from 'ng2-charts';
 export class GraphicLineComponent {
 
   @Input() fullData:any = {};
+  @Output() somethingChange: EventEmitter<response> = new EventEmitter<response>();
+
+  constructor(private marketStack: MarketstackService) {
+
+  }
+
+  clickJulio() {
+    console.log('click Julio');
+    this.marketStack.setJulioProp('zaquiel');
+    this.somethingChange.emit({nombre: 'Julio', edad: 28});
+  }
 
   private colorLine1 = '#DB001C';
   private colorLine2 = 'rgba(82, 216, 0)';
@@ -96,7 +113,7 @@ export class GraphicLineComponent {
 
 
 
-  
+
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
   public randomize(): void {
@@ -106,5 +123,4 @@ export class GraphicLineComponent {
   public changeLabel() {
     // this.chart.update();
   }
-s
 }
